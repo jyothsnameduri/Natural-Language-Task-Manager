@@ -1,12 +1,15 @@
 
 import React, { useState, useEffect } from 'react';
 import { TaskInput } from '@/components/TaskInput';
+import { MeetingMinutesInput } from '@/components/MeetingMinutesInput';
 import { TaskBoard } from '@/components/TaskBoard';
 import { FilterPanel } from '@/components/FilterPanel';
 import { TaskAnalytics } from '@/components/TaskAnalytics';
-import { Search, Settings, Moon, Sun } from 'lucide-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Search, Settings, Moon, Sun, Plus, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { useToast } from '@/hooks/use-toast';
 
 export interface Task {
   id: string;
@@ -39,6 +42,7 @@ const Index = () => {
   });
   const [darkMode, setDarkMode] = useState(false);
   const [showAnalytics, setShowAnalytics] = useState(false);
+  const { toast } = useToast();
 
   // Load tasks from localStorage on mount
   useEffect(() => {
@@ -65,6 +69,26 @@ const Index = () => {
       createdAt: new Date()
     };
     setTasks(prev => [newTask, ...prev]);
+    
+    toast({
+      title: "Task Created",
+      description: `"${task.title}" has been added to your task list.`,
+    });
+  };
+
+  const addTasks = (newTasks: Omit<Task, 'id' | 'createdAt'>[]) => {
+    const tasksWithIds = newTasks.map((task, index) => ({
+      ...task,
+      id: (Date.now() + index).toString(),
+      createdAt: new Date()
+    }));
+    
+    setTasks(prev => [...tasksWithIds, ...prev]);
+    
+    toast({
+      title: "Meeting Tasks Added",
+      description: `${newTasks.length} tasks have been extracted and added to your task list.`,
+    });
   };
 
   const updateTask = (id: string, updates: Partial<Task>) => {
@@ -75,6 +99,11 @@ const Index = () => {
 
   const deleteTask = (id: string) => {
     setTasks(prev => prev.filter(task => task.id !== id));
+    
+    toast({
+      title: "Task Deleted",
+      description: "The task has been removed from your list.",
+    });
   };
 
   const uniqueAssignees = Array.from(new Set(tasks.map(task => task.assignee).filter(Boolean)));
@@ -141,13 +170,34 @@ const Index = () => {
             Intelligent Task Management
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            Transform your productivity with natural language task creation and intelligent organization
+            Transform your productivity with natural language task creation and AI-powered meeting minutes parsing
           </p>
         </div>
 
-        {/* Task Input */}
+        {/* Task Input Tabs */}
         <div className="mb-8">
-          <TaskInput onAddTask={addTask} darkMode={darkMode} />
+          <Tabs defaultValue="single" className="w-full">
+            <TabsList className={`grid w-full grid-cols-2 mb-6 ${
+              darkMode ? 'bg-slate-800' : 'bg-slate-100'
+            }`}>
+              <TabsTrigger value="single" className="flex items-center space-x-2">
+                <Plus className="h-4 w-4" />
+                <span>Single Task Entry</span>
+              </TabsTrigger>
+              <TabsTrigger value="meeting" className="flex items-center space-x-2">
+                <FileText className="h-4 w-4" />
+                <span>Meeting Minutes</span>
+              </TabsTrigger>
+            </TabsList>
+            
+            <TabsContent value="single" className="mt-0">
+              <TaskInput onAddTask={addTask} darkMode={darkMode} />
+            </TabsContent>
+            
+            <TabsContent value="meeting" className="mt-0">
+              <MeetingMinutesInput onAddTasks={addTasks} darkMode={darkMode} />
+            </TabsContent>
+          </Tabs>
         </div>
 
         {/* Analytics Panel */}

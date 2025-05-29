@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -34,11 +33,12 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdate, onDelete, da
     priority: task.priority
   });
 
+  // Updated priority colors according to requirements
   const priorityColors = {
     P1: 'bg-red-100 text-red-700 border-red-200 dark:bg-red-900 dark:text-red-300 dark:border-red-800',
     P2: 'bg-orange-100 text-orange-700 border-orange-200 dark:bg-orange-900 dark:text-orange-300 dark:border-orange-800',
-    P3: 'bg-emerald-100 text-emerald-700 border-emerald-200 dark:bg-emerald-900 dark:text-emerald-300 dark:border-emerald-800',
-    P4: 'bg-slate-100 text-slate-700 border-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700'
+    P3: 'bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-900 dark:text-blue-300 dark:border-blue-800',
+    P4: 'bg-emerald-100 text-emerald-700 border-emerald-200 dark:bg-emerald-900 dark:text-emerald-300 dark:border-emerald-800'
   };
 
   const statusColors = {
@@ -100,7 +100,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdate, onDelete, da
   const isOverdue = task.dueDate && new Date() > task.dueDate && task.status !== 'completed';
 
   return (
-    <Card className={`p-4 transition-all duration-300 hover:shadow-lg border-l-4 ${
+    <Card className={`p-4 transition-all duration-300 hover:shadow-lg border-l-4 transform hover:scale-[1.02] ${
       isOverdue 
         ? 'border-l-red-500' 
         : task.status === 'completed' 
@@ -139,10 +139,10 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdate, onDelete, da
                   : 'bg-slate-50 border-slate-300 text-slate-700'
               }`}
             >
-              <option value="P1">P1</option>
-              <option value="P2">P2</option>
-              <option value="P3">P3</option>
-              <option value="P4">P4</option>
+              <option value="P1">P1 - Urgent</option>
+              <option value="P2">P2 - High</option>
+              <option value="P3">P3 - Normal</option>
+              <option value="P4">P4 - Low</option>
             </select>
           </div>
           
@@ -163,7 +163,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdate, onDelete, da
           <div className="flex items-start justify-between mb-3">
             <div className="flex items-center space-x-2">
               <StatusIcon className={`h-4 w-4 ${statusColors[task.status]}`} />
-              <Badge className={`text-xs ${priorityColors[task.priority]}`}>
+              <Badge className={`text-xs border ${priorityColors[task.priority]}`}>
                 <Flag className="h-3 w-3 mr-1" />
                 {task.priority}
               </Badge>
@@ -174,7 +174,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdate, onDelete, da
                 size="sm"
                 variant="ghost"
                 onClick={() => setIsEditing(true)}
-                className="h-7 w-7 p-0"
+                className="h-7 w-7 p-0 hover:bg-slate-100 dark:hover:bg-slate-700"
               >
                 <Edit2 className="h-3 w-3" />
               </Button>
@@ -182,7 +182,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdate, onDelete, da
                 size="sm"
                 variant="ghost"
                 onClick={() => onDelete(task.id)}
-                className="h-7 w-7 p-0 text-red-500 hover:text-red-700"
+                className="h-7 w-7 p-0 text-red-500 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-900"
               >
                 <Trash2 className="h-3 w-3" />
               </Button>
@@ -190,7 +190,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdate, onDelete, da
           </div>
 
           {/* Title */}
-          <h3 className={`font-medium mb-3 leading-snug ${
+          <h3 className={`font-medium mb-3 leading-snug transition-all duration-200 ${
             task.status === 'completed' 
               ? 'line-through text-slate-500 dark:text-slate-400' 
               : 'text-slate-900 dark:text-slate-100'
@@ -202,7 +202,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdate, onDelete, da
           <div className="space-y-2">
             {task.assignee && (
               <div className="flex items-center text-sm text-slate-600 dark:text-slate-400">
-                <div className="w-6 h-6 bg-gradient-to-r from-violet-500 to-emerald-500 rounded-full flex items-center justify-center text-white text-xs font-medium mr-2">
+                <div className="w-6 h-6 bg-gradient-to-r from-violet-500 to-blue-500 rounded-full flex items-center justify-center text-white text-xs font-medium mr-2">
                   {task.assignee.charAt(0).toUpperCase()}
                 </div>
                 {task.assignee}
@@ -233,7 +233,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdate, onDelete, da
                 size="sm"
                 variant="outline"
                 onClick={() => onUpdate(task.id, { status: 'in-progress' })}
-                className="text-blue-600 border-blue-200 hover:bg-blue-50 dark:text-blue-400 dark:border-blue-800 dark:hover:bg-blue-900"
+                className="text-blue-600 border-blue-200 hover:bg-blue-50 dark:text-blue-400 dark:border-blue-800 dark:hover:bg-blue-900 transition-all duration-200"
               >
                 <Play className="h-3 w-3 mr-1" />
                 Start
@@ -246,7 +246,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdate, onDelete, da
                   size="sm"
                   variant="outline"
                   onClick={() => onUpdate(task.id, { status: 'pending' })}
-                  className="text-slate-600 border-slate-200 hover:bg-slate-50 dark:text-slate-400 dark:border-slate-700 dark:hover:bg-slate-800"
+                  className="text-slate-600 border-slate-200 hover:bg-slate-50 dark:text-slate-400 dark:border-slate-700 dark:hover:bg-slate-800 transition-all duration-200"
                 >
                   <Pause className="h-3 w-3 mr-1" />
                   Pause
@@ -254,7 +254,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdate, onDelete, da
                 <Button
                   size="sm"
                   onClick={() => onUpdate(task.id, { status: 'completed' })}
-                  className="bg-emerald-600 hover:bg-emerald-700 text-white"
+                  className="bg-emerald-600 hover:bg-emerald-700 text-white transition-all duration-200"
                 >
                   <CheckCircle2 className="h-3 w-3 mr-1" />
                   Complete
@@ -267,7 +267,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdate, onDelete, da
                 size="sm"
                 variant="outline"
                 onClick={() => onUpdate(task.id, { status: 'pending' })}
-                className="text-slate-600 border-slate-200 hover:bg-slate-50 dark:text-slate-400 dark:border-slate-700 dark:hover:bg-slate-800"
+                className="text-slate-600 border-slate-200 hover:bg-slate-50 dark:text-slate-400 dark:border-slate-700 dark:hover:bg-slate-800 transition-all duration-200"
               >
                 Reopen
               </Button>
