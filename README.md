@@ -19,7 +19,7 @@ TaskFlow Pro is a modern, AI-powered task management application that leverages 
 
 ## Demo
 
-![TaskFlow Pro Demo 1](./fluent-task-board-main/task%202%20sc1.png)
+![TaskFlow Pro Demo 1](./fluent-task-board-main/task2%20sc1.png)
 
 ![TaskFlow Pro Demo 2](./fluent-task-board-main/task2%20sc2.png)
 
@@ -85,6 +85,8 @@ If no API key is provided, TaskFlow Pro will automatically fall back to its buil
 2. Type your task in natural language (e.g., "Call John about the project proposal tomorrow at 2pm").
 3. TaskFlow Pro will automatically extract the title, assignee, due date, and priority.
 4. Press Ctrl+Enter or click Submit to add the task.
+
+
 
 ## Key Components
 
