@@ -19,9 +19,9 @@ TaskFlow Pro is a modern, AI-powered task management application that leverages 
 
 ## Demo
 
-![TaskFlow Pro Demo 1](./fluent-task-board-main/task%202%20sc1.png)
+![TaskFlow Pro Demo 1](./fluent-task-board-main/task 2 sc1.png)
 
-![TaskFlow Pro Demo 2](./fluent-task-board-main/task%202%20sc2.png)
+![TaskFlow Pro Demo 2](./fluent-task-board-main/task2 sc2.png)
 
 ## Features
 
