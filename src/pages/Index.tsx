@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { TaskInput } from '@/components/TaskInput';
 import { MeetingMinutesInput } from '@/components/MeetingMinutesInput';
@@ -166,11 +165,26 @@ const Index = () => {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Hero Section */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-slate-900 via-violet-600 to-emerald-600 dark:from-white dark:via-violet-400 dark:to-emerald-400 bg-clip-text text-transparent mb-4">
-            Intelligent Task Management
+          <h2
+            className="
+              text-5xl sm:text-6xl font-extrabold
+              bg-gradient-to-r from-violet-700 via-fuchsia-500 to-blue-600
+              bg-clip-text text-transparent
+              drop-shadow-lg
+              text-center
+              mb-4
+              tracking-tight
+              animate-gradient-x
+            "
+            style={{
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}
+          >
+            <span className="inline-block align-middle">🚀</span> Intelligent Task Management
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            Transform your productivity with natural language task creation and AI-powered meeting minutes parsing
+            Transform your productivity with natural language task creation
           </p>
         </div>
 

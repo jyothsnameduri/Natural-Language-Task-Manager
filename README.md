@@ -1,73 +1,107 @@
-# Welcome to your Lovable project
+# TaskFlow Pro - Natural Language Task Manager
 
-## Project info
+## Objective
+Build a Web App that lets a user add natural language tasks like:
+- "Finish landing page Aman by 11pm 20th June"
+- "Call client Rajeev tomorrow 5pm"
 
-**URL**: https://lovable.dev/projects/359caa00-b623-4ffd-ac58-0353726fac06
+## Functionality Requirements
+- **Extract:**
+  - **Task Name** (e.g., "Finish landing page")
+  - **Assignee** (e.g., "Aman")
+  - **Due Date & Time** (e.g., "11pm 20th June")
+- **Default priority**: P3 unless specified as P1, P2, or P4
+- **Display** the parsed task in a beautiful UI task board/list
 
-## How can I edit this code?
+## Overview
 
-There are several ways of editing your application.
+TaskFlow Pro is a modern, AI-powered task management application that leverages natural language processing to intelligently parse and organize your tasks. Simply type your task in plain English, and TaskFlow Pro will automatically extract key information like due dates, assignees, and priority levels.
 
-**Use Lovable**
+## Demo
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/359caa00-b623-4ffd-ac58-0353726fac06) and start prompting.
+![TaskFlow Pro Demo 1](./fluent-task-board-main/task%202%20sc1.png)
 
-Changes made via Lovable will be committed automatically to this repo.
+![TaskFlow Pro Demo 2](./fluent-task-board-main/task2%20sc2.png)
 
-**Use your preferred IDE**
+## Features
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- **Natural Language Processing**: Enter tasks in plain English (e.g., "Finish the report for Sarah by next Friday at 3pm with high priority").
+- **Smart Date Handling**: Automatically sets dates to the future when no year is specified.
+- **Priority Management**: Automatically assigns and color-codes priority levels (P1-P4).
+- **Task Filtering**: Filter tasks by assignee, priority, status, or search terms.
+- **Task Sorting**: Sort by due date, priority, or assignee.
+- **Comprehensive Task Editing**: Edit all task properties with an intuitive modal interface.
+- **Responsive Design**: Works beautifully on both desktop 
+- **Modern UI**: Clean design with smooth animations and transitions.
+- **Dark Mode**: Beautiful dark theme for night owls.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Technology Stack
 
-Follow these steps:
+- **Frontend**: React with TypeScript
+- **Styling**: TailwindCSS for responsive design
+- **State Management**: React Hooks and Context API
+- **AI Integration**: OpenAI API (optional)
+- **Routing**: React Router
+- **Build Tool**: Vite
+- **UI Library**: shadcn-ui
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v16 or higher)
+- npm
+
+### Installation
+
+```bash
+# Clone the repository
 git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### OpenAI API Configuration (Optional)
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+TaskFlow Pro can use OpenAI's GPT model for enhanced natural language processing. To enable this feature:
 
-**Use GitHub Codespaces**
+1. Create a `.env` file in the project root
+2. Add your OpenAI API key:  
+   ```
+   VITE_OPENAI_API_KEY=your_api_key_here
+   ```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+If no API key is provided, TaskFlow Pro will automatically fall back to its built-in NLP parser.
 
-## What technologies are used for this project?
+## Usage
 
-This project is built with:
+### Single Task Entry
+1. Click the "Add Task" button to create a new task.
+2. Type your task in natural language (e.g., "Call John about the project proposal tomorrow at 2pm").
+3. TaskFlow Pro will automatically extract the title, assignee, due date, and priority.
+4. Press Ctrl+Enter or click Submit to add the task.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Key Components
 
-## How can I deploy this project?
+- **TaskInput**: Handles natural language input and parsing for single tasks.
+- **TaskBoard**: Displays and manages tasks in a Kanban-style board.
+- **TaskCard**: Displays individual tasks with editing capabilities.
+- **TaskFilters**: Provides filtering and sorting options.
+- **NLP Parser**: Local natural language processing.
+- **OpenAI Service**: Integration with OpenAI API for enhanced parsing.
 
-Simply open [Lovable](https://lovable.dev/projects/359caa00-b623-4ffd-ac58-0353726fac06) and click on Share -> Publish.
+## Acknowledgments
 
-## Can I connect a custom domain to my Lovable project?
+- [OpenAI](https://openai.com/) for their powerful language models
+- [React](https://reactjs.org/) and [Vite](https://vitejs.dev/) for the frontend framework
+- [TailwindCSS](https://tailwindcss.com/) for the styling
 
-Yes, you can!
+---
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Created by Jyothsna M  
+Feel free to contribute or open issues!

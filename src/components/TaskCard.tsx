@@ -104,7 +104,11 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdate, onDelete, da
       isOverdue 
         ? 'border-l-red-500' 
         : task.status === 'completed' 
+<<<<<<< HEAD
           ? 'border-l-emerald-500' 
+=======
+          ? 'border-l-emerald-500 bg-emerald-50 dark:bg-emerald-900/30'
+>>>>>>> aae2cd2 (Update README with project objective, features, and personalized info)
           : 'border-l-violet-500'
     } ${
       darkMode 
@@ -192,7 +196,11 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdate, onDelete, da
           {/* Title */}
           <h3 className={`font-medium mb-3 leading-snug transition-all duration-200 ${
             task.status === 'completed' 
+<<<<<<< HEAD
               ? 'line-through text-slate-500 dark:text-slate-400' 
+=======
+              ? 'text-emerald-700 dark:text-emerald-400 opacity-80'
+>>>>>>> aae2cd2 (Update README with project objective, features, and personalized info)
               : 'text-slate-900 dark:text-slate-100'
           }`}>
             {task.title}
