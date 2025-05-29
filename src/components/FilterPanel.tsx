@@ -67,14 +67,14 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
         </div>
 
         {/* Assignee Filter */}
-        <Select value={filters.assignee} onValueChange={(value) => updateFilter('assignee', value)}>
+        <Select value={filters.assignee || 'all'} onValueChange={(value) => updateFilter('assignee', value === 'all' ? '' : value)}>
           <SelectTrigger className={`w-40 h-8 text-sm ${
             darkMode ? 'bg-slate-900 border-slate-600' : 'bg-slate-50 border-slate-300'
           }`}>
             <SelectValue placeholder="Assignee" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">All Assignees</SelectItem>
+            <SelectItem value="all">All Assignees</SelectItem>
             {assignees.map(assignee => (
               <SelectItem key={assignee} value={assignee}>
                 {assignee}
@@ -84,14 +84,14 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
         </Select>
 
         {/* Priority Filter */}
-        <Select value={filters.priority} onValueChange={(value) => updateFilter('priority', value)}>
+        <Select value={filters.priority || 'all'} onValueChange={(value) => updateFilter('priority', value === 'all' ? '' : value)}>
           <SelectTrigger className={`w-32 h-8 text-sm ${
             darkMode ? 'bg-slate-900 border-slate-600' : 'bg-slate-50 border-slate-300'
           }`}>
             <SelectValue placeholder="Priority" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">All Priorities</SelectItem>
+            <SelectItem value="all">All Priorities</SelectItem>
             <SelectItem value="P1">P1 - Urgent</SelectItem>
             <SelectItem value="P2">P2 - High</SelectItem>
             <SelectItem value="P3">P3 - Normal</SelectItem>
@@ -100,14 +100,14 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
         </Select>
 
         {/* Status Filter */}
-        <Select value={filters.status} onValueChange={(value) => updateFilter('status', value)}>
+        <Select value={filters.status || 'all'} onValueChange={(value) => updateFilter('status', value === 'all' ? '' : value)}>
           <SelectTrigger className={`w-32 h-8 text-sm ${
             darkMode ? 'bg-slate-900 border-slate-600' : 'bg-slate-50 border-slate-300'
           }`}>
             <SelectValue placeholder="Status" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">All Status</SelectItem>
+            <SelectItem value="all">All Status</SelectItem>
             <SelectItem value="pending">To Do</SelectItem>
             <SelectItem value="in-progress">In Progress</SelectItem>
             <SelectItem value="completed">Completed</SelectItem>
