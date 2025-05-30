@@ -7,16 +7,31 @@ TaskFlow is a modern task management application that uses natural language proc
 ## Demo
 
 ![TaskFlow Pro Demo 1](./task_2_sc_1.png)
-<br>
+*Single Task Entry: Shows the main interface where users can add a task using natural language and see it parsed into structured fields.*
+<br><br>
 
 ![TaskFlow Pro Demo 2](./task_2_sc_2.png)
-<br>
+*Task Board: Displays tasks organized by status (To Do, In Progress, Completed) with filtering and sorting options.*
+<br><br>
 
 ![TaskFlow Pro Demo 3](./task_2_sc_3.png)
-<br>
+*Meeting Minutes Parser: Demonstrates extracting multiple tasks from a meeting transcript and reviewing/editing them before adding to the board.*
+<br><br>
 
 ![TaskFlow Pro Demo 4](./task_2_sc_4.png)
-<br>
+*Analytics & Dark Mode: Shows analytics for tasks and the application in dark mode for better accessibility.*
+<br><br>
+
+## 🏷️ Task Priorities
+
+TaskFlow supports four priority levels for tasks:
+
+- **P1 (Urgent):** Highest priority, for critical or time-sensitive tasks. (Red)
+- **P2 (High):** Important tasks that should be addressed soon. (Orange)
+- **P3 (Normal):** Default priority for regular tasks. (Blue)
+- **P4 (Low):** Lowest priority, for non-urgent or optional tasks. (Green)
+
+Each priority is color-coded throughout the app for quick visual identification and can be set automatically from natural language or manually when editing a task.
 
 ## 🚀 Features
 
