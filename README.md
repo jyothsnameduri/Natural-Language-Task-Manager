@@ -7,12 +7,16 @@ TaskFlow is a modern task management application that uses natural language proc
 ## Demo
 
 ![TaskFlow Pro Demo 1](./task_2_sc_1.png)
+<br>
 
 ![TaskFlow Pro Demo 2](./task_2_sc_2.png)
+<br>
 
 ![TaskFlow Pro Demo 3](./task_2_sc_3.png)
+<br>
 
 ![TaskFlow Pro Demo 4](./task_2_sc_4.png)
+<br>
 
 ## 🚀 Features
 
