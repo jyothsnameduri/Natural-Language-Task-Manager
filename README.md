@@ -1,21 +1,8 @@
-# TaskFlow Pro - Natural Language Task Manager
+# TaskFlow - Natural Language Task Manager
 
-## Objective
-Build a Web App that lets a user add natural language tasks like:
-- "Finish landing page Aman by 11pm 20th June"
-- "Call client Rajeev tomorrow 5pm"
+## 📝 Overview
 
-## Functionality Requirements
-- **Extract:**
-  - **Task Name** (e.g., "Finish landing page")
-  - **Assignee** (e.g., "Aman")
-  - **Due Date & Time** (e.g., "11pm 20th June")
-- **Default priority**: P3 unless specified as P1, P2, or P4
-- **Display** the parsed task in a beautiful UI task board/list
-
-## Overview
-
-TaskFlow Pro is a modern, AI-powered task management application that leverages natural language processing to intelligently parse and organize your tasks. Simply type your task in plain English, and TaskFlow Pro will automatically extract key information like due dates, assignees, and priority levels.
+TaskFlow is a modern task management application that uses natural language processing to intelligently parse and organize your tasks. Simply type your task in plain English, and TaskFlow will automatically extract key information like due dates, assignees, and priority levels.
 
 ## Demo
 
@@ -23,41 +10,50 @@ TaskFlow Pro is a modern, AI-powered task management application that leverages 
 
 ![TaskFlow Pro Demo 2](./task_2_sc_2.png)
 
-## Features
+![TaskFlow Pro Demo 3](./task_2_sc_3.png)
 
-- **Natural Language Processing**: Enter tasks in plain English (e.g., "Finish the report for Sarah by next Friday at 3pm with high priority").
-- **Smart Date Handling**: Automatically sets dates to the future when no year is specified.
-- **Priority Management**: Automatically assigns and color-codes priority levels (P1-P4).
-- **Task Filtering**: Filter tasks by assignee, priority, status, or search terms.
-- **Task Sorting**: Sort by due date, priority, or assignee.
-- **Comprehensive Task Editing**: Edit all task properties with an intuitive modal interface.
-- **Responsive Design**: Works beautifully on both desktop 
-- **Modern UI**: Clean design with smooth animations and transitions.
-- **Dark Mode**: Beautiful dark theme for night owls.
+![TaskFlow Pro Demo 4](./task_2_sc_4.png)
 
-## Technology Stack
+## 🚀 Features
 
-- **Frontend**: React with TypeScript
-- **Styling**: TailwindCSS for responsive design
-- **State Management**: React Hooks and Context API
-- **AI Integration**: OpenAI API (optional)
-- **Routing**: React Router
-- **Build Tool**: Vite
-- **UI Library**: shadcn-ui
+- 🗣️ **Natural Language Processing**: Enter tasks in plain English (e.g., "Finish the report for Sarah by next Friday at 3pm with high priority").
+- 🤖 **AI-Powered Task Parsing**: Uses OpenAI's GPT model to intelligently extract task details.
+- 📝 **Meeting Minutes to Task Converter**: Extract multiple tasks from meeting transcripts or conversation text.
+- 🧠 **Local NLP Fallback**: Built-in NLP parser works even without an API key.
+- 📅 **Smart Date Handling**: Automatically sets dates to the future when no year is specified.
+- 🚦 **Priority Management**: Automatically assigns and color-codes priority levels (P1-P4).
+- 🔍 **Task Filtering**: Filter tasks by assignee, priority, status, or search terms.
+- ↕️ **Task Sorting**: Sort by due date, priority, or assignee.
+- ✏️ **Comprehensive Task Editing**: Edit all task properties with an intuitive modal interface.
+- 📱 **Responsive Design**: Works beautifully on both desktop and mobile devices.
+- 💾 **Local Storage**: Tasks are saved in your browser's local storage.
+- 🎨 **Modern UI**: Clean design with smooth animations and transitions.
 
-## Getting Started
+## 🛠️ Technology Stack
+
+- ⚛️ **Frontend**: React with TypeScript
+- 🎨 **Styling**: TailwindCSS for responsive design
+- 🌀 **State Management**: React Hooks and Context API
+- 🤖 **AI Integration**: OpenAI API (optional)
+- 🛣️ **Routing**: React Router
+- ⚡ **Build Tool**: Vite
+- 🧩 **UI Library**: shadcn-ui
+
+## ⚡ Getting Started
 
 ### Prerequisites
 
 - Node.js (v16 or higher)
-- npm
+- npm or yarn
 
 ### Installation
 
 ```bash
 # Clone the repository
-git clone <YOUR_GIT_URL>
-cd <YOUR_PROJECT_NAME>
+git clone https://github.com/lokeshpanthangi/Natural-Language-Task-Manager.git
+
+# Navigate to the project directory
+cd Natural-Language-Task-Manager
 
 # Install dependencies
 npm install
@@ -68,36 +64,42 @@ npm run dev
 
 ### OpenAI API Configuration (Optional)
 
-TaskFlow Pro can use OpenAI's GPT model for enhanced natural language processing. To enable this feature:
+TaskFlow can use OpenAI's GPT model for enhanced natural language processing. To enable this feature:
 
 1. Create a `.env` file in the project root
-2. Add your OpenAI API key:  
-   ```
-   VITE_OPENAI_API_KEY=your_api_key_here
-   ```
+2. Add your OpenAI API key: `VITE_OPENAI_API_KEY=your_api_key_here`
 
-If no API key is provided, TaskFlow Pro will automatically fall back to its built-in NLP parser.
+If no API key is provided, TaskFlow will automatically fall back to its built-in NLP parser.
 
-## Usage
+## 💡 Usage
 
 ### Single Task Entry
-1. Click the "Add Task" button to create a new task.
-2. Type your task in natural language (e.g., "Call John about the project proposal tomorrow at 2pm").
-3. TaskFlow Pro will automatically extract the title, assignee, due date, and priority.
-4. Press Ctrl+Enter or click Submit to add the task.
+1. Click the "Add Task" button to create a new task
+2. Type your task in natural language (e.g., "Call John about the project proposal tomorrow at 2pm")
+3. Toggle the "Use AI" switch if you want to use OpenAI for parsing (requires API key)
+4. TaskFlow will automatically extract the title, assignee, due date, and priority
+5. Press Ctrl+Enter or click Submit to add the task
 
+### Meeting Minutes Parser
+1. Click the "Meeting Minutes" button to open the meeting minutes parser
+2. Paste your meeting transcript or conversation text into the textarea
+3. Click "Parse Meeting Minutes" to extract tasks
+4. Review and edit the extracted tasks as needed
+5. Click "Add All Tasks" to add them to your task board
 
+## 🧩 Key Components
 
-## Key Components
+- 📝 **TaskInput**: Handles natural language input and parsing for single tasks
+- 🗒️ **MeetingMinutesParser**: Extracts multiple tasks from meeting transcripts
+- 📋 **TaskList**: Displays and manages tasks
+- 🃏 **TaskCard**: Displays individual tasks with editing capabilities
+- 🛠️ **TaskEditModal**: Provides comprehensive task editing interface
+- 🔍 **TaskFilters**: Provides filtering and sorting options
+- 🧠 **NLP Parser**: Local natural language processing
+- 🗒️ **Meeting Minutes Parser**: Extracts tasks from conversational text
+- 🤖 **OpenAI Service**: Integration with OpenAI API for enhanced parsing
 
-- **TaskInput**: Handles natural language input and parsing for single tasks.
-- **TaskBoard**: Displays and manages tasks in a Kanban-style board.
-- **TaskCard**: Displays individual tasks with editing capabilities.
-- **TaskFilters**: Provides filtering and sorting options.
-- **NLP Parser**: Local natural language processing.
-- **OpenAI Service**: Integration with OpenAI API for enhanced parsing.
-
-## Acknowledgments
+## 🙏 Acknowledgments
 
 - [OpenAI](https://openai.com/) for their powerful language models
 - [React](https://reactjs.org/) and [Vite](https://vitejs.dev/) for the frontend framework
@@ -105,5 +107,14 @@ If no API key is provided, TaskFlow Pro will automatically fall back to its buil
 
 ---
 
-Created by Jyothsna M  
-Feel free to contribute or open issues!
+Created by Jyothsna M
+
+## 💻 What technologies are used for this project?
+
+This project is built with:
+
+- ⚡ Vite
+- 🟦 TypeScript
+- ⚛️ React
+- 🧩 shadcn-ui
+- 🎨 Tailwind CSS

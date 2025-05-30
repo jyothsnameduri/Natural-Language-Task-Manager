@@ -127,7 +127,7 @@ const Index = () => {
                   <span className="text-white font-bold text-sm">T</span>
                 </div>
                 <h1 className="text-xl font-bold bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
-                  TaskFlow Pro
+                  Intelimeet
                 </h1>
               </div>
             </div>
@@ -181,10 +181,10 @@ const Index = () => {
               WebkitTextFillColor: 'transparent',
             }}
           >
-            <span className="inline-block align-middle">🚀</span> Intelligent Task Management
+            <span className="inline-block align-middle">🚀</span> AI-Powered Meeting Converter
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            Transform your productivity with natural language task creation
+            Summarize meetings, extract action items, and auto-generate notes with AI
           </p>
         </div>
 

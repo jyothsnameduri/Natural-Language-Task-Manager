@@ -1,10 +1,10 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { parseMeetingMinutes } from '@/utils/meeting-parser';
+import { parseTaskWithAI } from '@/utils/ai-parser';
 import { FileText, Plus, Users, Calendar, Flag, Check, X, Edit2 } from 'lucide-react';
 import { Task } from '@/pages/Index';
 
@@ -32,12 +32,20 @@ export const MeetingMinutesInput: React.FC<MeetingMinutesInputProps> = ({ onAddT
 
     setIsLoading(true);
     
-    // Simulate API processing time for better UX
-    setTimeout(() => {
-      const tasks = parseMeetingMinutes(transcript);
+    try {
+      const result = await parseTaskWithAI(transcript);
+      let tasks = [];
+      if (Array.isArray(result)) {
+        tasks = result;
+      } else if (result) {
+        tasks = [result];
+      }
       setParsedTasks(tasks);
+    } catch (error) {
+      setParsedTasks([]);
+    } finally {
       setIsLoading(false);
-    }, 1500);
+    }
   };
 
   const handleEditTask = (index: number) => {
