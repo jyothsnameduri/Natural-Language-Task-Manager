@@ -100,7 +100,10 @@ export async function parseTaskWithAI(input: string): Promise<Omit<Task, 'id' | 
       throw new Error('Invalid response format from OpenAI');
     }
 
-    const parsedContent = JSON.parse(data.choices[0].message.content) as AIParsedTask | AIParsedTask[];
+    let parsedContent = JSON.parse(data.choices[0].message.content);
+    if (parsedContent && typeof parsedContent === 'object' && 'tasks' in parsedContent) {
+      parsedContent = parsedContent.tasks;
+    }
     console.log('Parsed content:', parsedContent);
 
     // Validate the parsed content
@@ -110,15 +113,13 @@ export async function parseTaskWithAI(input: string): Promise<Omit<Task, 'id' | 
 
     // Convert the AI response to our task format
     const convertToTask = (parsed: AIParsedTask): Omit<Task, 'id' | 'createdAt'> => {
-      const task = {
-        title: parsed.title,
+      return {
+        title: parsed.title || 'Untitled Task',
         assignee: parsed.assignee || '',
         dueDate: parsed.dueDate ? new Date(parsed.dueDate) : null,
-        priority: parsed.priority,
-        status: parsed.status
+        priority: parsed.priority || 'P3',
+        status: parsed.status || 'pending'
       };
-      console.log('Converted task:', task);
-      return task;
     };
 
     // Handle both single task and array of tasks
