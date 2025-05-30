@@ -69,7 +69,7 @@ Each priority is color-coded throughout the app for quick visual identification 
 
 ```bash
 # Clone the repository
-git clone https://github.com/lokeshpanthangi/Natural-Language-Task-Manager.git
+git clone https://github.com/jyothsnameduri/Natural-Language-Task-Manager.git
 
 # Navigate to the project directory
 cd Natural-Language-Task-Manager
